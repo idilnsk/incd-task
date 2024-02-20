@@ -5,7 +5,7 @@ import { getRandomArtistFromJSON } from '../../src/utils/randomArtist';
 import { searchArtistByName } from '../services/lastfmService';
 
 class ArtistController {
-  async searchArtist(req: Request, res: Response, next: NextFunction) {
+  async handleArtistSearchRequest (req: Request, res: Response, next: NextFunction) {
     try {
       const artistName = req.query.artistName as string;
       if (!artistName || artistName.trim() === '') {

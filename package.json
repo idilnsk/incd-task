@@ -26,6 +26,7 @@
     "start": "ts-node src/server.ts",
     "build": "react-scripts build",
     "test": "jest",
+    "clearTestCache": "jest --clearCache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
