@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+import express from 'express';
+
+import artistRoutes from './routes/artistRoutes';
+import  errorHandler  from './middlewares/errorHandler';
+
+
+
+const app = express();
+
+
+
+app.get('/', (req, res) => {
+  
+  res.send('Welcome to the API');
+});
+
+app.use(express.json());
+
+app.use('/api/artists', artistRoutes);
+
+app.use(errorHandler);
+
+export default app;

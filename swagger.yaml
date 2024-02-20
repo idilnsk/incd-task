@@ -1,0 +1,67 @@
+swagger: "2.0"
+info:
+  title: "Incedo assignment"
+  version: "1.0.0"
+  description: "API integration"
+servers:
+  - url: "http://localhost:3000"
+paths:
+  /api/artists:
+    get:
+      summary: "Retrieves artist data and writes it to a CSV file."
+      description: "This endpoint searches for artists matching the provided name and writes the result to a CSV file."
+      tags:
+        - Artists
+      parameters:
+        - in: query
+          name: artistName
+          type: string
+          description: "The name of the artist to search for."
+        - in: query
+          name: filename
+          type: string
+          description: "The name of the CSV file to save the artist data to. If not provided, a default name is used."
+      responses:
+        '200':
+          description: "Successfully retrieved artist data and wrote to the CSV file. The response includes artist details."
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: "Indicates if the operation was successful."
+              data:
+                type: array
+                items:
+                  $ref: "#/definitions/Artist"
+        '500':
+          description: "An error occurred during the operation."
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  Artist:
+    type: object
+    properties:
+      name:
+        type: string
+        description: "The name of the artist."
+      mbid:
+        type: string
+        description: "The MusicBrainz ID of the artist."
+      url:
+        type: string
+        description: "The URL to the Last.fm page of the artist."
+      image_small:
+        type: string
+        description: "URL to a small image of the artist."
+      image:
+        type: string
+        description: "URL to a larger image of the artist."
+  Error:
+    type: object
+    properties:
+      success:
+        type: boolean
+      message:
+        type: string
+        description: "A message detailing the error."
