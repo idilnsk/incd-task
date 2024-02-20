@@ -15,6 +15,7 @@ export const searchArtistByName = async (artistName: string) => {
 
     if (artistMatches && artistMatches.length > 0) {
       const artists = artistMatches.map((artist: Artist) => mapArtistToCsvRecord(artist));  
+      console.log("Mapped Artists:", artists); 
       return { artistFound: true, artist: artists };
     } else {
       return { artistFound: false, artist: [] };

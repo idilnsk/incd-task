@@ -1,12 +1,13 @@
 import { createObjectCsvWriter as createCsvWriter } from 'csv-writer';
 import { Artist } from '../types/artist';
 import { mapArtistToCsvRecord } from '../types/mapper'; 
+import path from 'path';
 
 
 export const writeArtistsToCSV = async (artists: Artist[], csvFileName: string) => {
-  
+  const filePath = path.resolve(__dirname, '..', '..', 'artistData', csvFileName);    console.log(`About to write artists to CSV at path: ${filePath}`);
   const csvWriter = createCsvWriter({
-    path: csvFileName,
+    path: filePath,
     header: [
       { id: 'name', title: 'NAME' },
       { id: 'mbid', title: 'MBID' },

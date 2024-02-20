@@ -27,7 +27,7 @@ class ArtistController {
         artistData = [randomArtist];
       }
 
-      const csvFileName = generateArtistCSVFile (artistData, req.query.filename as string);
+      const csvFileName = await  generateArtistCSVFile (artistData, req.query.filename as string);
       console.log('CSV File Name:', csvFileName);
 
       res.status(200).json({

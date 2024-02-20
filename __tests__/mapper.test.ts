@@ -1,5 +1,5 @@
 import { mapArtistToCsvRecord } from '../src/types/mapper'; 
-import { Artist,CsvArtistRecord } from '../src/types/artist'; 
+import { Artist, CsvArtistRecord } from '../src/types/artist'; 
 
 describe('mapArtistToCsvRecord function with mock data', () => {
   const mockArtists: Artist[] = [
@@ -9,12 +9,10 @@ describe('mapArtistToCsvRecord function with mock data', () => {
       listeners: '1234567',
       url: 'https://www.last.fm/music/Artist+Name',
       streamable: '3',
-      image: [
-        { '#text': 'small_image_url', size: 'small' },
-        { '#text': 'large_image_url', size: 'large' },
-      ],
+      image_small: 'http://example.com/small.jpg',
+      image_large: 'http://example.com/large.jpg',
     },
-
+    // ... add more mock artists if needed
   ];
 
   mockArtists.forEach(mockArtist => {
@@ -24,9 +22,9 @@ describe('mapArtistToCsvRecord function with mock data', () => {
         mbid: mockArtist.mbid,
         listeners: mockArtist.listeners,
         url: mockArtist.url,
-        streamable:mockArtist.streamable,
-        image_small: mockArtist.image.find(img => img.size === 'small')?.['#text'] || '',
-        image_large: mockArtist.image.find(img => img.size === 'large')?.['#text'] || '',
+        streamable: mockArtist.streamable,
+        image_small: mockArtist.image_small,
+        image_large: mockArtist.image_large,
       };
 
       const csvRecord = mapArtistToCsvRecord(mockArtist);

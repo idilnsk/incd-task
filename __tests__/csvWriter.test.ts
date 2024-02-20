@@ -4,28 +4,26 @@ import csv from 'csv-parser';
 import { writeArtistsToCSV } from '../src/utils/csvWriter';
 import { Artist } from '../src/types/artist';
 
-const testOutputDir = path.join(__dirname, 'test_output');
-const testFilePath = path.join(testOutputDir, 'test_artists.csv');
-
-
+const artistDataDir = path.join(__dirname, '..', 'artistData');
+const testFileName = 'test_artists.csv'; 
+const testFilePath = path.join(artistDataDir, testFileName);
 
 function generateArtists(numberOfArtists: number): Artist[] {
+    
     return Array.from({ length: numberOfArtists }, (_, i) => ({
         name: `Artist ${i + 1}`,
         mbid: `mbid-${i + 1}`,
         listeners: `Listeners ${i + 1}`, 
         url: `http://example.com/artist${i + 1}`,
         streamable: i % 2 === 0 ? '1' : '0', 
-        image: [{ 
-            "#text": `http://image.com/artist${i + 1}.jpg`,
-            size: 'large'
-          }],
+        image_small: `http://image.com/artist${i + 1}_small.jpg`,
+        image_large: `http://image.com/artist${i + 1}_large.jpg`,
     }));
 }
 
 beforeEach(() => {
-    if (!fs.existsSync(testOutputDir)) {
-        fs.mkdirSync(testOutputDir);
+    if (!fs.existsSync(artistDataDir)) {
+        fs.mkdirSync(artistDataDir)
     }
 });
 
@@ -38,13 +36,13 @@ afterEach(() => {
 
 
 describe('writeArtistsToCSV', () => {
+    
     it('should write artist data to a CSV file and verify content with CSV parsing', async () => {
         const artists = generateArtists(2); // Dynamically generate two artists
    
         
         await writeArtistsToCSV(artists, testFilePath);
 
-        // Check that the file was created
         expect(fs.existsSync(testFilePath)).toBe(true);
 
         // Prepare to parse the CSV file and collect the records
@@ -61,13 +59,13 @@ describe('writeArtistsToCSV', () => {
                         expect(results).toEqual(
                           expect.arrayContaining([
                             expect.objectContaining({
-                              NAME: artist.name,// Expect the original case as received
+                              NAME: artist.name,
                               MBID: artist.mbid,
                               LISTENERS:artist.listeners,
                               URL: artist.url,
                               STREAMABLE:artist.streamable,
-                              IMAGE_SMALL: artist.image.find(img => img.size === 'small')?.['#text'] ?? '',
-                              IMAGE_LARGE: artist.image.find(img => img.size === 'large')?.['#text'] ?? '',
+                              IMAGE_SMALL: artist.image_small || '',
+                              IMAGE_LARGE: artist.image_large || '',
                             })
                           ])
                         );

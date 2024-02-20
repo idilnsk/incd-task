@@ -4,7 +4,8 @@ export interface Artist {
   listeners: string;
   url: string;
   streamable: string;
-  image: Image[];
+  image_small: string; // URL of the small image
+  image_large: string; //
 }
 
 export interface Image {

@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "__tests__/**/*.ts" 
+    "__tests__/**/*" 
 , "axios.ts", "db"  ]
 }
