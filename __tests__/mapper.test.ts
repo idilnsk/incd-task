@@ -1,6 +1,5 @@
-import { mapArtistToCsvRecord } from '../src/types/mapper'; // Adjust the path as necessary
-import { Artist } from '../src/types/artist'; // Ensure this is the correct path
-import { CsvArtistRecord } from '../src/types/csvArtistRecord'; // Verify path
+import { mapArtistToCsvRecord } from '../src/types/mapper'; 
+import { Artist,CsvArtistRecord } from '../src/types/artist'; 
 
 describe('mapArtistToCsvRecord function with mock data', () => {
   const mockArtists: Artist[] = [
@@ -15,7 +14,7 @@ describe('mapArtistToCsvRecord function with mock data', () => {
         { '#text': 'large_image_url', size: 'large' },
       ],
     },
-    // Include more mock artists with varying data to test different scenariosm
+
   ];
 
   mockArtists.forEach(mockArtist => {

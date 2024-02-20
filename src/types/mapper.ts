@@ -1,5 +1,4 @@
-import { CsvArtistRecord } from "./csvArtistRecord";
-import { Artist } from "./artist";
+import { Artist,CsvArtistRecord  } from "./artist";
 
 export const mapArtistToCsvRecord = (artist: Artist): CsvArtistRecord => {
   const smallImageUrl = artist.image.find(img => img.size === 'small')?.["#text"] || '';

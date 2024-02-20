@@ -5,9 +5,7 @@ import axios from 'axios';
 import * as randomArtistModule from '../../src/utils/randomArtist';
 
 jest.mock('axios');
-// Mocking fs
 jest.mock('fs');
-// Manually telling Jest to use the mock for lastfmService
 jest.mock('../../src/services/lastfmService', () => require('.././__mocks__/lastfmService'));
 jest.mock('../../src/utils/csvWriter', () => require('.././__mocks__/csvWriter'));
 jest.mock('../../src/utils/randomArtist',()=>require('.././__mocks__/randomArtist'));
@@ -40,7 +38,7 @@ describe(`GET /api/artists`, () => {
     });
   });
 
-  it('returns 200 and writes artist data to the provided custom filename.', async () => {
+  it('returns 200 and writes artist data to a custom filename if provided', async () => {
     const artistName = 'Adele';
     const customFilename = 'custom_filename';
   

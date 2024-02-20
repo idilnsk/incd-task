@@ -17,8 +17,11 @@ export type CsvArtistRecord = {
   mbid: string;
   listeners: string;
   url: string;
-  image: string; // URL of the image, you might choose one size
+  streamable: string;
+  image_small: string; // URL of the small image
+  image_large: string; // URL of the large image
 };
+
 
 export interface IArtistData {
   results: {

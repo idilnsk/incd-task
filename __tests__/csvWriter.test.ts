@@ -16,7 +16,7 @@ function generateArtists(numberOfArtists: number): Artist[] {
         listeners: `Listeners ${i + 1}`, 
         url: `http://example.com/artist${i + 1}`,
         streamable: i % 2 === 0 ? '1' : '0', 
-        image: [{ // Ensuring that 'image' is an array of 'Image' type
+        image: [{ 
             "#text": `http://image.com/artist${i + 1}.jpg`,
             size: 'large'
           }],
