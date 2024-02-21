@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Create .env
-      run: cp .env.local.example .env.local.example
+      run: cp .env.local.example .env.example
       
     - name: Build docker images
       run: docker build -t challenge .
