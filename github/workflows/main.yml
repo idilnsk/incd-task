@@ -4,7 +4,7 @@ on:
   push:
     branches: '**'
   pull_request:
-    branches: [ main ]
+    branches: '**'
 
 jobs:
   build:
@@ -25,7 +25,6 @@ jobs:
 
     - name: Run Docker Container
       run: docker run -d --name challenge -p 3000:3000 challenge
-
     - name: Check Container Logs
       run: docker logs challenge
 
