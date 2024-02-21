@@ -6,7 +6,7 @@ info:
 servers:
   - url: "http://localhost:3000"
 paths:
-  /api/artists:
+   /search/{artistName}:
     get:
       summary: "Retrieves artist data and writes it to a CSV file."
       description: "This endpoint searches for artists matching the provided name and writes the result to a CSV file."

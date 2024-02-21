@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+Node.js Music Artist Search API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Node.js REST API application that allows users to search for music artists by name and writes the search results to a CSV file. If no results are found, the application retrieves artist names from a predefined JSON dictionary and repeats the search.
+Features
 
-## Available Scripts
+    Search for artists by name using the artist.search endpoint.
+    Write search results to a user-specified CSV file.
+    CSV includes artist name, MusicBrainz Identifier (mbid), URL, and images.
+    Fallback to a JSON dictionary of artist names if the search yields no results.
 
-In the project directory, you can run:
 
-### `npm start`
+Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To install the application, follow these steps:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    Clone the repository:
 
-### `npm test`
+    bash
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+git clone https://github.com/idilnsk/incd-task.git
 
-### `npm run build`
+Navigate to the application directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd incd-task
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install the required packages:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+To run the application, execute:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+npm start
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Using the API
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+After launching the application, you can utilize the API to perform artist searches by name and  export the results to a CSV file. The API offers a straightforward endpoint for this functionality:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Search for Artists and  Export to CSV
 
-## Learn More
+    Endpoint: GET /api/artists
+    Parameters:
+        artistName: The name of the artist you wish to search for.
+        filename: (Optional) The name of the CSV file where you want to save the search results. If not provided, the aritst will be saved in default artist-data.csv file.
+    Usage:
+        To search for an artist, provide their name as the artistName parameter.
+        Add the filename parameter with your desired CSV file name.
+    Example Usage:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Search for an Artist and Export to CSV:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        To search for "Adele" and export the results to a CSV file named "pop.csv", use the URL: http://localhost:3000/api/artists?artistName=adele&filename=pop

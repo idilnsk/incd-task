@@ -12,7 +12,6 @@ describe('mapArtistToCsvRecord function with mock data', () => {
       image_small: 'http://example.com/small.jpg',
       image_large: 'http://example.com/large.jpg',
     },
-    // ... add more mock artists if needed
   ];
 
   mockArtists.forEach(mockArtist => {

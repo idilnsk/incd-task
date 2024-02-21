@@ -18,6 +18,7 @@ export const searchArtistByName = async (artistName: string) => {
       console.log("Mapped Artists:", artists); 
       return { artistFound: true, artist: artists };
     } else {
+    
       return { artistFound: false, artist: [] };
     }
   } catch (error: any) {

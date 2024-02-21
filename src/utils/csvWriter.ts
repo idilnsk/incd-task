@@ -23,5 +23,5 @@ export const writeArtistsToCSV = async (artists: Artist[], csvFileName: string) 
   console.log(JSON.stringify(records, null, 2));
   console.log('Writing artist data to CSV:', csvFileName);
 
-  await csvWriter.writeRecords(records); // Returns a promise
+  await csvWriter.writeRecords(records);
 };

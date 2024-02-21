@@ -6,7 +6,7 @@ import { searchArtistByName } from '../services/lastfmService';
 import { generateArtistCSVFile  } from '../utils/csvFile';
 
 class ArtistController {
-  async handleArtistSearchRequest(req: Request, res: Response, next: NextFunction) {
+   async handleArtistSearchRequest(req: Request, res: Response, next: NextFunction) {
     try {
       const artistName = req.query.artistName as string;
       if (!artistName || artistName.trim() === '') {
@@ -45,3 +45,4 @@ class ArtistController {
 }
 
 export default new ArtistController();
+
