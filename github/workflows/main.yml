@@ -21,10 +21,11 @@ jobs:
       run: cp .env.local .env
 
     - name: Build Docker Image
-      run: docker build -t challenge .
+      run: docker build -t my-node-app .
 
     - name: Run Docker Container
-      run: docker run -d --name challenge -p 3000:3000 challenge
+      run: docker run -d --name challenge -p 3000:3000 my-node-app
+
     - name: Check Container Logs
       run: docker logs challenge
 
@@ -35,4 +36,4 @@ jobs:
       run: |
         docker stop challenge
         docker rm challenge
-        docker rmi challenge
+        docker rmi my-node-app
