@@ -15,8 +15,6 @@ To install the application, follow these steps:
 
     Clone the repository:
 
-    bash
-
 git clone https://github.com/idilnsk/incd-task.git
 
 Navigate to the application directory:
