@@ -7,6 +7,7 @@ import { generateArtistCSVFile  } from '../utils/csvFile';
 
 class ArtistController {
    async handleArtistSearchRequest(req: Request, res: Response, next: NextFunction) {
+    
     try {
       const artistName = req.query.artistName as string;
       if (!artistName || artistName.trim() === '') {

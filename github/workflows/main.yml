@@ -25,6 +25,9 @@ jobs:
       
     - name: Run tests
       run: docker exec -t challenge npm test
+
+    - name: Print application logs
+      run: docker logs challenge
       
     - name: Clean up
       run: |
