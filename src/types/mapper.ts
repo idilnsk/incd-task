@@ -1,5 +1,7 @@
 import { Artist, CsvArtistRecord } from "./artist";
 
+// Transforms an artist object into a CSV record format, ensuring each field has a default value if the original artist object lacks certain properties.
+
 export const mapArtistToCsvRecord = (artist: Artist): CsvArtistRecord => {
   return {
     name: artist.name,

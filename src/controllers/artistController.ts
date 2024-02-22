@@ -17,30 +17,30 @@ class ArtistController {
         });
       }
 
-      const result = await searchArtistByName(artistName);
+      const result = await searchArtistByName(artistName);   // Searches for an artist by name via LastFM api
       let artistData = result.artist;
 
-      if (!result.artistFound || artistData.length === 0) {
-        const randomArtist = getRandomArtistFromJSON();
+      if (!result.artistFound || artistData.length === 0) { // If there's no artist result,
+        const randomArtist = getRandomArtistFromJSON();     // Gets a random artist.
         if (!randomArtist) {
           throw new HttpError('Failed to fetch a random artist', 500);
         }
         artistData = [randomArtist];
       }
 
-      const csvFileName = await  generateArtistCSVFile (artistData, req.query.filename as string);
+      const csvFileName = await  generateArtistCSVFile (artistData, req.query.filename as string); // Creates a CSV file with the artist data.
       console.log('CSV File Name:', csvFileName);
 
       res.status(200).json({
         success: true,
         statusCode: 200,
         message: "Random artist data written to CSV",
-        csvFileName: csvFileName,
-        artist: artistData
+        csvFileName: csvFileName, // Sends the generated CSV file name in the response.
+        artist: artistData        // Sends the artist data in the response.
       });
 
     } catch (error: any) {
-      next(error);
+      next(error); // Passes any caught error to the next error handling middleware.
     }
   }
 }

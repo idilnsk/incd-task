@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import request from 'supertest';
-import errorHandler from './errorHandler'; // Adjust the path as needed
+import errorHandler from './errorHandler';
 
 describe('Error Handling Middleware', () => {
     it('should handle errors correctly', async () => {
@@ -13,7 +13,6 @@ describe('Error Handling Middleware', () => {
             next(err);
         });
 
-        // Use your error handling middleware
         app.use(errorHandler);
 
         const response = await request(app).get('/test');

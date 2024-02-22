@@ -10,11 +10,11 @@ export const searchArtistByName = async (artistName: string) => {
   const searchUrl = `${BASE_URL}&artist=${encodeURIComponent(artistName)}`;
   
   try {
-    const response = await axios.get(searchUrl);
-    const artistMatches = response.data.results?.artistmatches?.artist;
+    const response = await axios.get(searchUrl); // Sends a GET request to LastFM API to search for the artist by name.
+    const artistMatches = response.data.results?.artistmatches?.artist;  // Extracts artist matches from the response data.
 
-    if (artistMatches && artistMatches.length > 0) {
-      const artists = artistMatches.map((artist: Artist) => mapArtistToCsvRecord(artist));  
+    if (artistMatches && artistMatches.length > 0) {  // If artist matches are found,
+      const artists = artistMatches.map((artist: Artist) => mapArtistToCsvRecord(artist));   // maps each artist to CSV record format.
       console.log("Mapped Artists:", artists); 
       return { artistFound: true, artist: artists };
     } else {
